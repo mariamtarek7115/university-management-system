@@ -1,25 +1,117 @@
-import logo from './logo.svg';
-import './App.css';
+const modules = [
+	{
+		title: 'Staff Module',
+		code: '01',
+		summary: 'Manage lecturers, administrators, roles, and departmental assignments.',
+		focus: ['Profiles', 'Departments', 'Role setup'],
+		action: 'Open staff records',
+		accent: 'staff',
+	},
+	{
+		title: 'Community Module',
+		code: '02',
+		summary: 'Coordinate student engagement, clubs, notices, and community activities.',
+		focus: ['Announcements', 'Events', 'Engagement'],
+		action: 'Explore community',
+		accent: 'community',
+	},
+	{
+		title: 'Curriculum Module',
+		code: '03',
+		summary: 'Organize programmes, course structures, credit units, and academic flow.',
+		focus: ['Programmes', 'Courses', 'Semester plan'],
+		action: 'View curriculum',
+		accent: 'curriculum',
+	},
+	{
+		title: 'Facilities Module',
+		code: '04',
+		summary: 'Track classrooms, labs, maintenance status, and shared campus resources.',
+		focus: ['Rooms', 'Assets', 'Maintenance'],
+		action: 'Check facilities',
+		accent: 'facilities',
+	},
+];
+
+const userHighlights = [
+	'Review staff and department information in one place.',
+	'Check announcements, activities, and community updates.',
+	'Browse programmes, courses, and semester structure.',
+	'View campus spaces, assets, and facility records.',
+];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="app-shell">
+			<div className="background-orb orb-one" />
+			<div className="background-orb orb-two" />
+
+			<main className="dashboard-layout">
+				<section className="hero-panel">
+					<div className="hero-copy">
+						<p className="eyebrow">University Management System</p>
+						<h1>Your university dashboard, organized by what matters.</h1>
+						<p className="hero-text">
+							Access staff operations, community activity, academic planning, and
+							facilities management from one clean entry point designed for daily use.
+						</p>
+					</div>
+
+					<div className="hero-utility-grid">
+						<section className="hero-utility-card" aria-label="What you can do">
+							<p className="panel-label">What you can do</p>
+							<ul className="highlight-list">
+								{userHighlights.map((item) => (
+									<li key={item}>{item}</li>
+								))}
+							</ul>
+						</section>
+					</div>
+				</section>
+
+				<section className="module-section">
+					<div className="section-heading">
+						<div>
+							<p className="eyebrow">Modules</p>
+							<h2>Choose a service area</h2>
+						</div>
+						<p className="section-text">
+							Open the part of the system you want to manage right now.
+						</p>
+					</div>
+
+					<div className="module-grid">
+						{modules.map((module) => (
+							<article
+								key={module.title}
+								className={`module-card module-card--${module.accent}`}
+							>
+								<div className="module-card__header">
+									<span className="module-code">{module.code}</span>
+									<span className="module-status">Available</span>
+								</div>
+
+								<div className="module-card__body">
+									<h3>{module.title}</h3>
+									<p>{module.summary}</p>
+								</div>
+
+								<div className="module-tags" aria-label={`${module.title} focus areas`}>
+									{module.focus.map((item) => (
+										<span key={item}>{item}</span>
+									))}
+								</div>
+
+								<button type="button" className="module-action">
+									{module.action}
+								</button>
+							</article>
+						))}
+					</div>
+				</section>
+			</main>
+		</div>
+	);
 }
 
 export default App;
