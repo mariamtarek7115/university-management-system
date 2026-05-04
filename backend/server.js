@@ -4,7 +4,8 @@ const cors = require("cors");
 const app = express();
 
 const connectDB = require("./config/db");
-connectDB();
+connectDB();//aayzeen nzabt mongodb
+
 // Middleware
 app.use(cors());
 app.use(express.json());
