@@ -1,3 +1,10 @@
+import { useEffect, useState } from 'react';
+
+import CommunityModulePage from './pages/CommunityModulePage';
+import CurriculumModulePage from './pages/CurriculumModulePage';
+import FacilitiesModulePage from './pages/FacilitiesModulePage';
+import StaffModulePage from './pages/StaffModulePage';
+
 const modules = [
 	{
 		title: 'Staff Module',
@@ -6,6 +13,8 @@ const modules = [
 		focus: ['Profiles', 'Departments', 'Role setup'],
 		action: 'Open staff records',
 		accent: 'staff',
+		view: 'staff',
+		available: true,
 	},
 	{
 		title: 'Community Module',
@@ -14,6 +23,8 @@ const modules = [
 		focus: ['Announcements', 'Events', 'Engagement'],
 		action: 'Explore community',
 		accent: 'community',
+		view: 'community',
+		available: true,
 	},
 	{
 		title: 'Curriculum Module',
@@ -22,6 +33,8 @@ const modules = [
 		focus: ['Programmes', 'Courses', 'Semester plan'],
 		action: 'View curriculum',
 		accent: 'curriculum',
+		view: 'curriculum',
+		available: true,
 	},
 	{
 		title: 'Facilities Module',
@@ -30,6 +43,8 @@ const modules = [
 		focus: ['Rooms', 'Assets', 'Maintenance'],
 		action: 'Check facilities',
 		accent: 'facilities',
+		view: 'facilities',
+		available: true,
 	},
 ];
 
@@ -41,6 +56,28 @@ const userHighlights = [
 ];
 
 function App() {
+	const [activeView, setActiveView] = useState('dashboard');
+
+	useEffect(() => {
+		window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+	}, [activeView]);
+
+	if (activeView === 'staff') {
+		return <StaffModulePage onBack={() => setActiveView('dashboard')} />;
+	}
+
+	if (activeView === 'community') {
+		return <CommunityModulePage onBack={() => setActiveView('dashboard')} />;
+	}
+
+	if (activeView === 'curriculum') {
+		return <CurriculumModulePage onBack={() => setActiveView('dashboard')} />;
+	}
+
+	if (activeView === 'facilities') {
+		return <FacilitiesModulePage onBack={() => setActiveView('dashboard')} />;
+	}
+
 	return (
 		<div className="app-shell">
 			<div className="background-orb orb-one" />
@@ -85,6 +122,15 @@ function App() {
 							<article
 								key={module.title}
 								className={`module-card module-card--${module.accent}`}
+								role={module.available ? 'button' : undefined}
+								tabIndex={module.available ? 0 : undefined}
+								onClick={() => module.view && setActiveView(module.view)}
+								onKeyDown={(event) => {
+									if (module.view && (event.key === 'Enter' || event.key === ' ')) {
+										event.preventDefault();
+										setActiveView(module.view);
+									}
+								}}
 							>
 								<div className="module-card__header">
 									<span className="module-code">{module.code}</span>
@@ -102,9 +148,9 @@ function App() {
 									))}
 								</div>
 
-								<button type="button" className="module-action">
+								<div className={`module-action ${module.available ? '' : 'module-action--disabled'}`}>
 									{module.action}
-								</button>
+								</div>
 							</article>
 						))}
 					</div>
