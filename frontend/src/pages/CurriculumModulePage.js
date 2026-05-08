@@ -32,7 +32,7 @@ const defaultStaffDirectory = [
 	{ id: 'staff-003', name: 'Prof. Lillian Mensah', role: 'Professor', email: 'l.mensah@ums.edu' },
 	{ id: 'staff-004', name: 'Daniel Otieno', role: 'Teaching Assistant', email: 'd.otieno@ums.edu' },
 ];
-
+//Mock Data
 const initialCourseCatalog = [
 	{
 		id: 'csc201',
