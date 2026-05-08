@@ -443,19 +443,19 @@ body {
 }
 
 .curriculum-resource-chip,
-.curriculum-status-chip {
-  padding: 9px 12px;
-  border-radius: 999px;
-  background: rgba(87, 116, 75, 0.1);
-  color: var(--curriculum);
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-decoration: none;
+.curriculum-status-chip--accept {
+  background: rgba(26, 93, 59, 0.14);
+  color: #1a5d3b;
 }
 
-.curriculum-status-chip {
-  display: inline-flex;
-  align-items: center;
+.curriculum-status-chip--reject {
+  background: rgba(138, 24, 24, 0.14);
+  color: #8a1818;
+}
+
+.curriculum-status-chip--pending {
+  background: rgba(180, 120, 20, 0.14);
+  color: #9a6700;
 }
 
 .curriculum-notification-panel {

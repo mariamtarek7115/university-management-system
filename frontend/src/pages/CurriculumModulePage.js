@@ -753,7 +753,17 @@ function CurriculumModulePage({ onBack }) {
 										<button type="button" className="staff-secondary-action" onClick={() => handleRequestStatusChange(request.id, 'Reject')}>
 											Reject
 										</button>
-										<span className="curriculum-status-chip">{request.status}</span>
+										<span
+	className={`curriculum-status-chip ${
+		request.status === 'Accept'
+			? 'curriculum-status-chip--accept'
+			: request.status === 'Reject'
+			? 'curriculum-status-chip--reject'
+			: 'curriculum-status-chip--pending'
+	}`}
+>
+	{request.status}
+</span>
 									</div>
 								</article>
 							))}
