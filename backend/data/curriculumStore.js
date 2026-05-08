@@ -336,7 +336,7 @@ async function getCurriculumBootstrap() {
     registrationRequests: requests.map(toRequestPayload),
   };
 }
-
+// Validates GPA-based registration rules and prerequisite checks
 async function createRegistrationRequest(payload) {
   const student = await CurriculumStudent.findOne({ id: payload.studentId });
   if (!student) {
@@ -392,7 +392,7 @@ async function createRegistrationRequest(payload) {
 
   return { request: toRequestPayload(request) };
 }
-
+// Updates registration request status and syncs enrollment changes
 async function updateRegistrationRequestStatus(requestId, status) {
   const request = await CurriculumRequest.findOne({ id: requestId });
   if (!request) {
@@ -431,7 +431,7 @@ async function updateRegistrationRequestStatus(requestId, status) {
     course: toCoursePayload(course),
   };
 }
-
+// Calculates GPA and updates student academic standing
 async function postCourseGrades(payload) {
   const student = await CurriculumStudent.findOne({ id: payload.studentId });
   if (!student) {

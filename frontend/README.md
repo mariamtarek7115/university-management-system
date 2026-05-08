@@ -68,3 +68,31 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+## Curriculum Module
+
+The Curriculum Module manages academic operations inside the University Management System.
+
+Main Features:
+- Semester course offering
+- Rule-based registration using GPA validation
+- Grade entry and GPA calculation
+- Student registration requests
+- Add/Drop workflow
+- Exam schedule viewing
+
+Technologies Used:
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+
+Main API Endpoints:
+- GET /api/curriculum/bootstrap
+- POST /api/curriculum/requests
+- PATCH /api/curriculum/requests/:requestId/status
+- PATCH /api/curriculum/grades
