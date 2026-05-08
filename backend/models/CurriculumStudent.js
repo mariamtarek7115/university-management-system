@@ -1,3 +1,4 @@
+//The schema of curriculum data 
 const mongoose = require('mongoose');
 
 const curriculumStudentSchema = new mongoose.Schema(
