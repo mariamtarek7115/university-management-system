@@ -1,3 +1,25 @@
+/**
+ * FacilitiesModulePage
+ *
+ * A dual-mode facilities management page for a university platform.
+ *
+ * STUDENT VIEW
+ * - Search and filter classrooms by name, building, or type
+ * - Check room availability for a selected date and time
+ * - View a room's daily booking schedule
+ *
+ * ADMIN VIEW
+ * - Create, update, and delete room bookings
+ * - Assign equipment items to departments
+ * - Add, edit, and delete student records
+ *
+ * Data is bootstrapped from the server via `getFacilitiesBootstrap` on mount.
+ * All mutations (bookings, equipment, students) are persisted through the
+ * facilitiesService layer and reflected immediately in local state.
+ *
+ * Props:
+ *   onBack {Function} - Callback to return to the main dashboard
+ */
 import { useEffect, useMemo, useState } from 'react';
 
 import {
